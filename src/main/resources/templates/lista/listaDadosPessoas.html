@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Listagem</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+  	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+</head>
+<body>
+	<ul>
+		<li><a href="/">Inicio</a></li><hr>
+		<li><a href="/cadastroCliente">Adicionar Cliente</a></li>
+		<li><a href="/cadastroProduto">Adicionar Produto</a></li><hr>
+		<li><a class="active" href="/listaClientes">Listar Clientes</a></li>
+		<li><a href="/listaProdutos">Listar Produtos</a></li><hr>
+	</ul>
+
+	<div style="margin-left:21%;padding:1px 16px;height:1000px;">
+		<br/>
+		<h5>Ao clicar no link você é redirecionado para o perfil da pessoa no linkedin</h5>
+		 
+		 <table>
+		   	<thead>
+           		<tr>
+                	<th>Nome</th>
+                	<th>Link</th>
+                	<th>Curso</th>
+                	<th>Campus</th>
+            	</tr>
+        	</thead>
+		  	<tr th:each = "dadosPessoa : ${dadosPessoas}">
+			  <td th:text = "${dadosPessoa.nome}"></td>
+			  <td>
+			  	<a th:href="@{${dadosPessoa.link}}" target="_blank" th:text="${dadosPessoa.link}">Abrir link em nova aba</a>
+			  </td>
+			  <td th:text = "${dadosPessoa.curso}"></td>
+			  <td th:text = "${dadosPessoa.campus}"></td>
+		  </tr>
+		 </table>
+	 </div>
+	 <script type="text/javascript" src="/materialize/js/materialize.js"></script>
+	 <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>
