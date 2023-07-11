@@ -10,17 +10,19 @@
 </head>
 <body>
 	<ul>
-		<li><a href="/">Inicio</a></li><hr>
-		<li><a href="/cadastroCliente">Adicionar Cliente</a></li>
-		<li><a href="/cadastroProduto">Adicionar Produto</a></li><hr>
-		<li><a class="active" href="/listaClientes">Listar Clientes</a></li>
-		<li><a href="/listaProdutos">Listar Produtos</a></li><hr>
+		<li>
+			<a href="/">Inicio</a>
+		</li>
+		<hr>Campus
+		<li th:each="campus : ${listaCampus}">
+            <a th:href="@{/listaCampus(parametro=${campus})}"><span th:text="${campus}"></span></a>
+        </li>
 	</ul>
 
 	<div style="margin-left:21%;padding:1px 16px;height:1000px;">
 		<br/>
 		<h5>Ao clicar no link você é redirecionado para o perfil da pessoa no linkedin</h5>
-		 
+		<a href="/cadastrarDadosPessoa" class="waves-effect waves-light btn">Fazer meu cadastro</a>
 		 <table>
 		   	<thead>
            		<tr>

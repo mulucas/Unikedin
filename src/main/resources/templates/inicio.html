@@ -11,27 +11,15 @@
 
 </head>
 <body>
-	<ul>
-		<li>
-			<a class="active" href="/">Inicio</a>
-		</li>
-		<hr>Campus
-		<li th:each="campus : ${listaCampus}">
-            <a th:href="@{'/cadastroSolicitacao' + ${campus}}"><span th:text="${campus}"></span></a>
-        </li>
-		<hr>Cursos
-		<li th:each="curso : ${listaCursos}">
-            <a th:href="@{'/cadastroSolicitacao' + ${curso}}"><span th:text="${curso}"></span></a>
-        </li>
-	</ul>
 	
-	<div style="margin-left:21%;padding:1px 16px;height:1000px;">
+	
+	<div style="padding:1px 16px;">
 		<div class="row">
 			<div class="col s12">
 			  <div class="card teal darken-1">
 				<div class="card-content white-text">
 				  <span class="card-title">Unikedin</span>
-				  <p>Uma das formas de começarmos e aumentarmos nosso networking é através da faculdade.
+				  <p>Uma dos meios de começarmos e aumentarmos nosso networking é através da faculdade.
 					Então partiu nos conectar e aumentar nosso Networking galera?</p>
 					<br>
 					<p>Já deixei o meu cadatrado abaixo, me adicione ai.</p>
@@ -66,7 +54,7 @@
 		</table> 
 		<br/>
 		
-		<a href="/listaDadosPessoas" class="waves-effect waves-light btn">Fazer meu cadastro</a>
+		<a href="/cadastrarDadosPessoa" class="waves-effect waves-light btn">Fazer meu cadastro</a>
 		<a href="/listaDadosPessoas" class="waves-effect waves-light btn">Ver dados já cadastrados</a>
 		<br/>
 		<br/>
@@ -79,37 +67,29 @@
 				  <span class="card-title">Angicos</span>
 				</div>
 				<div class="card-action">
-				  <a href="#">Ver Discentes</a>
+				  <a th:href="@{/listaCampus(parametro='Angicos')}">Ver Discentes</a>
 				</div>
 			  </div>
 			</div>
 			<div class="col s12 m3">
 			  <div class="card">
 				<div class="card-content">
-				  <img src="images/sample-1.jpg">
+				  <img src="img/caraubas.png">
 				  <span class="card-title">Caraúbas</span>
 				</div>
-				<div class="card-content">
-				  <p>I am a very simple card. I am good at containing small bits of information.
-				  I am convenient because I require little markup to use effectively.</p>
-				</div>
 				<div class="card-action">
-				  <a href="#">Ver Discentes</a>
+				  <a th:href="@{/listaCampus(parametro='Caraubas')}">Ver Discentes</a>
 				</div>
 			  </div>
 			</div>
 			<div class="col s12 m3">
 				<div class="card">
 				  <div class="card-content">
-					<img src="images/sample-1.jpg">
+					<img src="img/mossoro.jpg">
 					<span class="card-title">Mossoró</span>
 				  </div>
-				  <div class="card-content">
-					<p>I am a very simple card. I am good at containing small bits of information.
-					I am convenient because I require little markup to use effectively.</p>
-				  </div>
 				  <div class="card-action">
-					<a href="#">Ver Discentes</a>
+					<a th:href="@{/listaCampus(parametro='Mossoro')}">Ver Discentes</a>
 				  </div>
 				</div>
 			  </div>
@@ -121,7 +101,7 @@
 				  </div>
 				 
 				  <div class="card-action">
-					<a href="#">Ver Discentes</a>
+					<a th:href="@{/listaCampus(parametro='Pau dos Ferros')}">Ver Discentes</a>
 				  </div>
 				</div>
 			</div>

@@ -13,38 +13,19 @@
 		<li>
 			<a href="/">Inicio</a>
 		</li>
-		<hr>Educação
-		<li>
-			<a href="/cadastroSolicitacao">Escolas</a>
-		</li>
-		<li>
-			<a href="/listaSolicitacoes">Transporte Escolar</a>
-		</li>
-		<hr>Saúde
-		<li>
-			<a href="/">Consulta Médica</a>
-		</li>
-		<li>
-			<a href="/">Postos de Saúde</a>
-		</li>
-		<hr>Infraestrutura
-		<li>
-			<a class="active" href="/cadastroSolicitacao">Cadastrar Solitação</a>
-		</li>
-		<li>
-			<a href="/cadastroSolicitacao">Listar Solitação</a>
-		</li>
-		<li>
-			<a href="/listaProdutos">Coleta de Lixo</a>
-		</li>
+		<hr>Campus
+		<li th:each="campus : ${listaCampus}">
+            <a th:href="@{/listaCampus(parametro=${campus})}"><span th:text="${campus}"></span></a>
+        </li>
 	</ul>
-	
+
 	<div style="margin-left:21%;padding:1px 16px;height:1000px;">
-		<form action="salvarDadosPessoa" method="post" th:object="${dadosPessoaObj}">
-			<label>Nome</label>
-			<input name="nome" th:field="*{nome}">
-			
-			<label>Link</label>
+		<h5>Preencha todos os campos abaixo para realizar o cadastro</h5>
+		
+		<br>
+		<form action="salvarDadosPessoa" method="post" th:object="${dadosPessoaObj}">		
+			<!-- Campos do formulário -->
+			<input placeholder="Nome e Sobrenome" name="nome" th:field="*{nome}">
 			<input placeholder="Link do linkedin" name="link" th:field="*{link}">
 			
 			<label for="campus" class="active">Campus</label> 
@@ -64,6 +45,8 @@
 				<option value="SISTEMAS DE INFORMAÇÃO" th:text="SISTEMAS.INF" />
 				<option value="ZOOTECNIA" th:text="ZOOTECNIA" />
 			</select> 
+
+			 <!-- Botão de envio do formulário -->
 			<br>
 			<input class="waves-effect waves-light btn" type="submit" value="Salvar">
 			
