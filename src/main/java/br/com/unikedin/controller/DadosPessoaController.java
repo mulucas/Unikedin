@@ -49,7 +49,7 @@ public class DadosPessoaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "**/salvarDadosPessoa")
 	public ModelAndView salvar(DadosPessoa dadosPessoa) {
-		andView = new ModelAndView("adicionado/dadosPessoaAdicionado");
+		andView = new ModelAndView("adicionada/dadosPessoaAdicionada");
 		dadosPessoaRepository.save(dadosPessoa);
 		andView.addObject("dadosPessoaObj", new DadosPessoa());
 		return andView;

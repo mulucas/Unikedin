@@ -34,7 +34,7 @@
 				<option value="Angicos" th:text="Angicos" />
 				<option value="Caraúbas" th:text="Caraúbas" />
 				<option value="Mossoró" th:text="Mossoró" />
-				<option value="Pau dos Ferros" th:text="PDF" />
+				<option th:inline="text" value="Pau dos Ferros">Pau dos Ferros</option>
 			</select>
 
 			<label>Curso</label>
@@ -48,8 +48,7 @@
 
 			 <!-- Botão de envio do formulário -->
 			<br>
-			<input class="waves-effect waves-light btn" type="submit" value="Salvar">
-			
+			<input class="waves-effect waves-light btn" type="submit" value="Salvar">			
 	 	</form>
  	</div>
  	
