@@ -22,7 +22,22 @@
 	<div style="margin-left:21%;padding:1px 16px;height:1000px;">
 		<br/>
 		<h5>Ao clicar no link você é redirecionado para o perfil da pessoa no linkedin</h5>
-		<a href="/cadastrarDadosPessoa" class="waves-effect waves-light btn">Fazer meu cadastro</a>
+		<form action="pesquisarpessoa" method="post" class="col s12" id="pesquisarpessoa" th:object="${dadosPessoaObj}">
+            <div class="row">
+                <div class="input-field col s4">
+                    <input type="text" th:field="*{nome}" id="nome" />
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="input-field col s4">
+                    <select class="browser-default" th:field="*{curso}">
+						<option th:each="cursos : ${listaCursos}" th:value="${cursos}" th:text="${cursos}">Campus</option>
+					</select>
+                </div>
+                <div class="input-field col s4">
+                    <button type="submit" class="btn">Buscar</button>
+                </div>
+            </div>
+        </form>
 		 <table>
 		   	<thead>
            		<tr>
@@ -41,6 +56,8 @@
 			  <td th:text = "${dadosPessoa.campus}"></td>
 		  </tr>
 		 </table>
+		 <br/>
+		 <a href="/cadastrarDadosPessoa" class="waves-effect waves-light btn">Fazer meu cadastro</a>
 	 </div>
 	 <script type="text/javascript" src="/materialize/js/materialize.js"></script>
 	 <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

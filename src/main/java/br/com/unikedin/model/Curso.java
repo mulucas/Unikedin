@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Curso {
-    ANGICOS("ADMINISTRAÇÃO"),
-    CARAUBAS("ARQUITETURA E URBANISMO"),
+    SELECIONE("-- SELECIONE --"),
+    ADMINISTRAÇÃO("ADMINISTRAÇÃO"),
+    ARQUITETURAEURBANISMO("ARQUITETURA E URBANISMO"),
     AGRONOMIA("AGRONOMIA"),
     BIOTECNOLOGIA("BIOTECNOLOGIA"),
     CIÊNCIADACOMPUTACAO("CIÊNCIA DA COMPUTAÇÃO"),
@@ -41,20 +42,20 @@ public enum Curso {
     SISTEMASDEINFORMACAO("SISTEMAS DE INFORMAÇÃO"),
     ZOOTECNIA("ZOOTECNIA");
 
-    private String nomeCurso;
+    private String nome;
 
-    Curso(String nomeCurso) {
-        this.nomeCurso = nomeCurso;
+    Curso(String nome) {
+        this.nome = nome;
     }
 
-    public String getNomeCurso() {
-        return nomeCurso;
+    public String getNome() {
+        return nome;
     }
 
-    public static List<String> getNomesCampus() {
+    public static List<String> getNomes() {
         List<String> nomes = new ArrayList<>();
         for (Curso curso : Curso.values()) {
-            nomes.add(curso.getNomeCurso());
+            nomes.add(curso.getNome());
         }
         return nomes;
     }

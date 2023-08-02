@@ -37,14 +37,10 @@
 				<option th:inline="text" value="Pau dos Ferros">Pau dos Ferros</option>
 			</select>
 
-			<label>Curso</label>
+			<label>Curso</label>		
 			<select class="browser-default" th:field="*{curso}">
-				<option value="" disabled selected="selected">--Escolha--</option>
-				<option value="QUÍMICA" th:text="QUÍMICA" />
-				<option value="ADMINISTRAÇÃO" th:text="ADMINISTRAÇÃO" />
-				<option value="SISTEMAS DE INFORMAÇÃO" th:text="SISTEMAS.INF" />
-				<option value="ZOOTECNIA" th:text="ZOOTECNIA" />
-			</select> 
+				<option th:each="cursos : ${listaCursos}" th:value="${cursos}" th:text="${cursos}">Campus</option>
+			</select>
 
 			 <!-- Botão de envio do formulário -->
 			<br>

@@ -1,9 +1,12 @@
 package br.com.unikedin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,24 +27,16 @@ public class DadosPessoaController {
 	
 	@RequestMapping("/")
 	public ModelAndView inicio() {
-		ModelAndView modelAndView = new ModelAndView("inicio");
-
-		List<String> listaCampus = Campus.getNomesCampus();
-		List<String> listaCursos = Curso.getNomesCampus();
-        
-        modelAndView.addObject("listaCampus", listaCampus);
-		modelAndView.addObject("listaCursos", listaCursos);
-
-		return modelAndView;
+		andView = new ModelAndView("inicio");
+		return andView;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/cadastrarDadosPessoa")
 	public ModelAndView cadastro() {
 		andView = new ModelAndView("cadastro/cadastrarDadosPessoa");
-
-		List<String> listaCampus = Campus.getNomesCampus();
         
-        andView.addObject("listaCampus", listaCampus);	
+        andView.addObject("listaCampus", Campus.getNomesCampus());
+		andView.addObject("listaCursos", Curso.getNomes());	
 		andView.addObject("dadosPessoaObj", new DadosPessoa());
 		
 		return andView;
@@ -61,9 +56,10 @@ public class DadosPessoaController {
 
 		Iterable<DadosPessoa> dadosPessoasIt = dadosPessoaRepository.findAll();
 		andView.addObject("dadosPessoas", dadosPessoasIt);
-
-		List<String> listaCampus = Campus.getNomesCampus();   
-        andView.addObject("listaCampus", listaCampus);
+ 
+        andView.addObject("listaCampus", Campus.getNomesCampus());
+		andView.addObject("listaCursos", Curso.getNomes());
+		andView.addObject("dadosPessoaObj", new DadosPessoa());
 
 		return andView;
 	}
@@ -80,4 +76,26 @@ public class DadosPessoaController {
 		
 		return andView;
 	}
+
+	@PostMapping("/pesquisarpessoa")
+    public ModelAndView buscarPorNome(@RequestParam("nome") String nome, @RequestParam("curso") String curso) {
+        andView = new ModelAndView("lista/listaDadosPessoas");
+
+    	Iterable<DadosPessoa> dadosPessoasIt = new ArrayList<>();
+
+		if (nome != null && !curso.equals("-- SELECIONE --")) {
+            dadosPessoasIt = dadosPessoaRepository.buscarPorNomeECursoIgnoreCase(nome, curso);
+        } else if (nome != null) {
+            dadosPessoasIt = dadosPessoaRepository.buscarPorNomeIgnoreCase(nome);
+        } else if (curso.equals("-- SELECIONE --")) {
+            dadosPessoasIt = dadosPessoaRepository.buscarPorCursoIgnoreCase(curso);
+        }
+
+		andView.addObject("dadosPessoas", dadosPessoasIt);
+    	andView.addObject("listaCampus", Campus.getNomesCampus());
+		andView.addObject("listaCursos", Curso.getNomes());
+		andView.addObject("dadosPessoaObj", new DadosPessoa());
+
+        return andView;
+    }
 }
